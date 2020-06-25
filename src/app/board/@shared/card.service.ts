@@ -16,9 +16,14 @@ export class CardService {
         
     }
 
-    getAllColumn(): Observable<CardList[]> {
+    getAllCards(): Observable<CardList[]> {
         return of(this.cardList)
     }
     
+    getCardsById(id: String): Observable<CardList[]> {
+        let result = this.cardList.filter(item=>item.columnListId == id);
+        console.log(result);
+        return of(result);
+    }
 
 }

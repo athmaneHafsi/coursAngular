@@ -12,7 +12,7 @@ import { ColumnService } from "../@shared/column.service";
 
 export class AddColumnComponent implements OnInit {
   columnForm: FormGroup;
-  constructor(private ColumnService : ColumnService, public dialogRef: MatDialogRef<AddColumnComponent>, private formBuilder: FormBuilder) { }
+  constructor(private columnService : ColumnService, public dialogRef: MatDialogRef<AddColumnComponent>, private formBuilder: FormBuilder) { }
 
 
   ngOnInit(): void {
@@ -33,9 +33,20 @@ export class AddColumnComponent implements OnInit {
   addColumn(){
     const formValue = this.columnForm.value;
     let newColumn:ColumnList = new ColumnList();
+      newColumn.$key = this.generateKey();
       newColumn.title = formValue['title'];
       newColumn.order = formValue['order'];
-    this.ColumnService.add(newColumn);
+      //newColumn.description = formValue['description'] 
+    this.columnService.add(newColumn);
   }
 
+  generateKey(): String {
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    const lengthOfCode = 4;
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
 }
