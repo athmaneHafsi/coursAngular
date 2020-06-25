@@ -1,0 +1,31 @@
+
+  <div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title">Ajouter une colonne</h1>
+    </header>
+    <section id="modal-body">
+      <form [formGroup]="cardForm" (ngSubmit)="addCard()">
+        <div class="form-group">
+          <label for="title">Titre</label>
+          <input type="text" id="title" class="form-control" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label for="color">Couleur</label>
+          <input type="color" id="color" class="form-control" formControlName="color">
+        </div>
+        <div class="form-group">
+          <label for="order">Ordre</label>
+          <input type="number" id="order" class="form-control" formControlName="order">
+        </div>
+        <div class="form-group">
+          <label for="priority">Priorité</label>
+          <input type="number" id="priority" class="form-control" formControlName="priority">
+        </div>
+        <button mat-raised-button type="submit" id="modal-action-button">Ajouter</button>
+      </form>
+    </section>
+</div>
