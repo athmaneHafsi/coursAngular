@@ -12,8 +12,9 @@ export class CardService {
         this.cardList.push(card);
     }
 
-    remove(id: string) {
-        
+    remove(card: CardList) {
+        this.cardList.splice(this.cardList.findIndex((item)=>item.$key == card.$key), 1);
+       
     }
 
     getAllCards(): Observable<CardList[]> {

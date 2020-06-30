@@ -18,26 +18,16 @@ export class ColumnComponent implements OnInit {
   constructor(private CardService: CardService, public matDialog: MatDialog) { }
 
   ngOnInit(): void {
-   /* this.CardService.getCardsById(this.item.$key)
-      .subscribe(cards => {
-        console.log(cards);
-        
-        this.cards = cards
-      });*/
-
       this.CardService.getAllCards()
       .subscribe(cards => {
-        let result = this.cards.filter(item=>item.columnListId == this.item.$key);
-        console.log(result);
-        
         this.cards = cards;
       });
   }
-
-  addCard() {
-
-  }
   
+  removeCard(card: CardList){
+    this.CardService.remove(card);
+  }
+
   openModal() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
