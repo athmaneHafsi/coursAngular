@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { ColumnList } from 'src/app/models/columnList-model';
 import { AddCardComponent } from '../add-card/add-card.component';
 import { CardService } from "../@shared/card.service"
 import { CardList } from 'src/app/models/cardList-model';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-column',
@@ -13,6 +14,7 @@ import { CardList } from 'src/app/models/cardList-model';
 
 export class ColumnComponent implements OnInit {
   @Input() item: ColumnList;
+  @Output() column = new EventEmitter();
   public cards: CardList[] = [];
 
   constructor(private CardService: CardService, public matDialog: MatDialog) { }
@@ -26,6 +28,14 @@ export class ColumnComponent implements OnInit {
   
   removeCard(card: CardList){
     this.CardService.remove(card);
+  }
+  
+  removeAllCards() {
+    this.CardService.removeAll(this.item.$key);
+  }
+
+  removeSelf() {
+    this.column.emit(this.item);
   }
 
   openModal() {

@@ -13,13 +13,16 @@ import {Observable} from "rxjs";
 
 export class AppComponent implements OnInit {
   title = 'coursAngular';
-  columLists:ColumnList[]
+  columLists:ColumnList[] = [];
 
   constructor(private ColumnService: ColumnService, public matDialog: MatDialog) {}
 
   ngOnInit(): void {
     this.ColumnService.getAllColumn()
         .subscribe(columnList => this.columLists = columnList);
+  }
+  removeColumn(col) {
+    this.ColumnService.remove(col);
   }
 
   openModal() {

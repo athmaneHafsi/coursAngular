@@ -12,8 +12,8 @@ export class ColumnService {
         this.columnList.push(column);
     }
 
-    remove(id: string) {
-
+    remove(col: ColumnList) {
+        this.columnList.splice(this.columnList.findIndex((item)=>item.$key == col.$key), 1);   
     }
 
     getAllColumn(): Observable<ColumnList[]> {

@@ -11,6 +11,7 @@ import { AddCardComponent } from './board/add-card/add-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BoardsComponent } from './boards/boards.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CardComponent,
     ColumnComponent,
     AddColumnComponent,
-    AddCardComponent
+    AddCardComponent,
+    BoardsComponent
   ],
   imports: [
     BrowserModule,

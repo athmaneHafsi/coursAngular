@@ -8,7 +8,6 @@ export class CardService {
     private cardList: CardList[] = [];
 
     add(card: any) {
-        // add modal to array of active modals
         this.cardList.push(card);
     }
 
@@ -20,10 +19,12 @@ export class CardService {
     getAllCards(): Observable<CardList[]> {
         return of(this.cardList)
     }
-    
+    removeAll(key : String){
+        
+    }
+
     getCardsById(id: String): Observable<CardList[]> {
         let result = this.cardList.filter(item=>item.columnListId == id);
-        console.log(result);
         return of(result);
     }
 

@@ -320,7 +320,7 @@
     <div id="report-prj-search">
       <div class="dx-fieldset flex-column" style="display: flex;">
         <div class="flex-row-container" *ngFor="let columList of columLists">
-            <app-column [item]="columList">
+            <app-column [item]="columList" (column)="removeColumn($event)">
             </app-column>
             
         </div>
